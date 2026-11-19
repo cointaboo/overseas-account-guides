@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>注册海外账号该用什么邮箱：Hotmail、Gmail、自建域名对比</title>
+<meta name="description" content="Hotmail、Gmail、自建域名邮箱在注册海外服务时的实际差别：成功率、收信能力、能不能批量管理、什么是双令牌。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://cointaboo.github.io/overseas-account-guides/email-for-accounts.html">
+<style>
+body{margin:0;font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:#1e293b;background:#f8fafc;}
+main{max-width:820px;margin:0 auto;padding:40px 20px 80px;background:#fff;}
+h1{font-size:27px;line-height:1.35;margin:0 0 8px;color:#0f172a;}
+.meta{font-size:13px;color:#94a3b8;margin-bottom:26px;padding-bottom:14px;border-bottom:1px solid #eef1f6;}
+h2{font-size:20px;margin:32px 0 12px;padding-left:10px;border-left:4px solid #2f6bf6;color:#0f172a;}
+h3{font-size:16px;margin:20px 0 8px;color:#0f172a;}
+p,li{color:#334155;}
+ul,ol{padding-left:22px;}
+table{width:100%;border-collapse:collapse;margin:16px 0 22px;font-size:14.5px;}
+th,td{border:1px solid #e2e8f0;padding:9px 11px;text-align:left;vertical-align:top;}
+th{background:#eef4ff;font-weight:700;}
+.note{background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:0 8px 8px 0;margin:18px 0;font-size:15px;}
+.cta{background:#eef4ff;border-radius:12px;padding:18px 20px;margin-top:34px;font-size:15px;}
+.cta a{color:#2f6bf6;font-weight:700;}
+code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:.92em;}
+.bread{font-size:13px;color:#94a3b8;margin-bottom:14px;}
+.bread a{color:#2f6bf6;}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article",
+"headline":"注册海外账号该用什么邮箱：Hotmail、Gmail、自建域名对比",
+"inLanguage":"zh-CN","dateModified":"2026-11-19",
+"author":{"@type":"Organization","name":"cointaboo"},
+"about":[{"@type":"Thing","name":"邮箱"}],
+"mentions":[{"@type":"Thing","name":"Hotmail"},{"@type":"Thing","name":"Gmail"},{"@type":"Thing","name":"Graph OAuth2"}]}
+</script>
+</head>
+<body>
+<main>
+<div class="bread"><a href="./">指南首页</a> › 邮箱</div>
+<h1>注册海外账号该用什么邮箱</h1>
+<div class="meta">更新于 2026-11-19</div>
+
+<p>邮箱是账号的「身份证 + 备用钥匙」。注册海外服务时用什么邮箱,直接影响三件事:<strong>能不能注册成功、能不能收到验证码、以后能不能找回账号</strong>。</p>
+
+<h2>三种主流选择</h2>
+
+<table>
+<thead><tr><th></th><th>Hotmail / Outlook</th><th>Gmail</th><th>自建域名邮箱</th></tr></thead>
+<tbody>
+<tr><td>注册海外服务成功率</td><td>高</td><td>高</td><td>中（域名太新会被拒）</td></tr>
+<tr><td>收信稳定性</td><td>好</td><td>最好</td><td>取决于域名信誉</td></tr>
+<tr><td>能不能程序化收信</td><td>能（Graph API / IMAP / POP3）</td><td>能（IMAP，需要应用专用密码）</td><td>能（自建服务器完全可控）</td></tr>
+<tr><td>封号风险</td><td>中（批量注册容易被封）</td><td>高（Google 风控严）</td><td>低（自己的域名）</td></tr>
+<tr><td>成本</td><td>低</td><td>中</td><td>域名 + 服务器成本</td></tr>
+</tbody>
+</table>
+
+<div class="note">2025 年以后,Google 对新注册 Gmail 的风控明显收紧:同一个 IP 注册多个会被要求手机验证,验证不通过直接封。批量场景下 Gmail 已经不好用,Hotmail 反而更稳。</div>
+
+<h2>Hotmail 的「双令牌」是什么</h2>
+
+<p>买 Hotmail 账号时经常看到「Graph-OAuth2」「双令牌」这样的标注。这是指这个账号已经完成了微软的 OAuth2 授权,拿到了一对令牌:</p>
+
+<ul>
+<li><strong>Access Token</strong>:短期有效（通常 1 小时）,用来调 Graph API</li>
+<li><strong>Refresh Token</strong>:长期有效,用来自动换新的 Access Token</li>
+</ul>
+
+<p>有了这对令牌,程序可以<strong>不登录网页、不输密码</strong>直接通过 Microsoft Graph API 读取这个邮箱的邮件。对需要程序化收验证码的场景,这比 IMAP 更稳（微软一直在收紧 IMAP 的密码登录）。</p>
+
+<h3>双令牌的实际限制</h3>
+
+<ul>
+<li>Refresh Token 不是永久的。长时间不用会过期,过期后要重新授权</li>
+<li>如果账号主人改了密码或被微软判定异常,令牌立即失效</li>
+<li>令牌只能读邮件,不能改密码、不能改绑</li>
+</ul>
+
+<h2>收信方式对比</h2>
+
+<table>
+<thead><tr><th>方式</th><th>适用邮箱</th><th>优点</th><th>缺点</th></tr></thead>
+<tbody>
+<tr><td>Graph API（OAuth2）</td><td>Outlook / Hotmail</td><td>稳定、不受 IMAP 限制</td><td>需要令牌,会过期</td></tr>
+<tr><td>IMAP</td><td>都支持</td><td>通用、标准协议</td><td>微软和 Google 都在收紧密码登录</td></tr>
+<tr><td>POP3</td><td>都支持</td><td>简单,拉取即删</td><td>只同步收件箱,不含文件夹</td></tr>
+<tr><td>转发到自己的邮箱</td><td>需要能登录设置</td><td>一次配置长期有效</td><td>要能登录网页</td></tr>
+</tbody>
+</table>
+
+<h2>注册海外服务时的实际经验</h2>
+
+<h3>哪些服务挑邮箱</h3>
+<ul>
+<li><strong>只认 Gmail</strong>:极少数（比如部分 Google 自家服务）</li>
+<li><strong>拒收自建域名</strong>:部分金融、支付类服务</li>
+<li><strong>拒收临时邮箱</strong>:几乎所有正经服务都会拦截 10minutemail 这类</li>
+<li><strong>不挑</strong>:大部分社交、电商、工具类服务,Hotmail 和 Gmail 都行</li>
+</ul>
+
+<h3>提高注册成功率的做法</h3>
+<ol>
+<li><strong>一个邮箱只注册一个服务</strong>,不要复用</li>
+<li><strong>邮箱要有历史</strong>（注册时间超过一周、有过收发记录）</li>
+<li><strong>注册 IP 和邮箱归属地一致</strong>（美国服务用美国 IP + 美国邮箱）</li>
+<li><strong>不要用同一批 IP 连续注册</strong>,会被关联</li>
+</ol>
+
+<h2>怎么判断一个邮箱还能不能用</h2>
+
+<ol>
+<li><strong>登录测试</strong>:能不能进网页邮箱</li>
+<li><strong>收发测试</strong>:给自己发一封,看能不能到</li>
+<li><strong>API 测试</strong>:如果用双令牌,调一次 Graph API 看返回</li>
+<li><strong>看是否被标记</strong>:发一封到 Gmail,看是否进垃圾箱（进垃圾箱说明域名/IP 信誉差）</li>
+</ol>
+
+<h2>常见问题</h2>
+
+<h3>Hotmail 和 Outlook 是同一个东西吗?</h3>
+<p>是。hotmail.com、outlook.com、live.com 都是微软的邮箱服务,现在统一用 Outlook 的界面和 API。买号时看到的后缀不同,实际是同一套系统。</p>
+
+<h3>买的邮箱能改密码吗?</h3>
+<p>看商品标注。标注「可改密」的可以自己改,标注「不可改」的只能收信。批量场景通常买不可改的,便宜且够用。</p>
+
+<h3>邮箱被封了怎么办?</h3>
+<p>没有通用解法。如果是微软封的,申诉成功率低;如果是服务商拒收（进垃圾箱），换一个邮箱即可。</p>
+
+<div class="cta">
+现成的 Hotmail / Outlook 邮箱（含 Graph-OAuth2 双令牌号）在
+<a href="https://yuantou.one/buy/email/" rel="noopener">yuantou.one 邮箱区</a> 有实时库存,
+按「是否带令牌」「是否可改密」「注册时长」都能筛。
+</div>
+</main>
+</body>
+</html>
