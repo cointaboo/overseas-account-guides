@@ -17,3 +17,9 @@
 ## License
 
 CC BY 4.0
+
+---
+
+**原文与完整指南**：https://yuantou.one/guide/
+
+- 相关主题：[ai-account-playbook](https://github.com/cointaboo/ai-account-playbook) · [apple-id-notes](https://github.com/cointaboo/apple-id-notes) · [telegram-account-notes](https://github.com/cointaboo/telegram-account-notes) · [payment-topup-notes](https://github.com/cointaboo/payment-topup-notes) · [overseas-account-buying-guide](https://github.com/cointaboo/overseas-account-buying-guide) · [account-guide-mcp](https://github.com/cointaboo/account-guide-mcp)
